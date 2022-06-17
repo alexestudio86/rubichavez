@@ -1,0 +1,13 @@
+p, h1, h2, h3, h4, h5, h6, figure, ul {
+    margin:         0;
+}
+.price:before {
+    content:        "$ ";
+    font:           bold 15px 'Amatic', sans-serif;
+}
+
+.price:after{
+    content:        " mxn";
+    font:           bold 10px 'Amatic', sans-serif;
+    text-transform: uppercase;
+}
