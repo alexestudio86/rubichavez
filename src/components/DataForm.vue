@@ -1,6 +1,7 @@
 <template>
   <div class="bg-light vh-100">    
     <div class="container" >
+
       <div class='d-flex justify-content-between align-items-center py-1'>
         <button type="button" class='btn btn-outline-secondary' @click.stop="back">
           <i class='fas fa-chevron-left fa-lg'/>
@@ -19,15 +20,19 @@
       </div>
 
       <div class="py-3" v-if='name.length > 4'>
-        <button class="btn btn-secondary w-100" type="button" data-bs-target="#carouselCar" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1">
+        <button class="btn btn-secondary w-100" type="button" data-bs-toggle="offcanvas" href="#offcanvasBottom" role="button" aria-controls="offcanvasBottom" >
           Realizar pedido
         </button>
       </div>
+
+      <Thankyou />
+
     </div>
   </div>
 </template>
 
 <script>
+import Thankyou from '@/components/Thankyou.vue'
 
 
 export default {
@@ -37,6 +42,9 @@ export default {
     return{
       name: ''
     }
+  },
+  components: {
+    Thankyou
   },
   methods: {
     back(){

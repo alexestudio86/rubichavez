@@ -26,11 +26,6 @@ const routes = [
     path: '/checkout',
     name: 'Checkout',
     component: () => import(/* webpackChunkName: "Checkout" */ '../views/CheckoutView.vue')
-  },
-  {
-    path: '/dataForm',
-    name: 'DataForm',
-    component: () => import(/* webpackChunkName: "DataForm" */ '../views/DataFormView.vue')
   }
 ]
 

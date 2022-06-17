@@ -33,10 +33,15 @@ export default {
       state.loader        = true;
       try{
         // No utilizar limitante de max-results
+        /*
         const data        = await fetch(`https://www.blogger.com/feeds/5038678016736099105/posts/default?alt=json`);
         const allData     = await data.json();
-        const feedJson   = allData.feed.entry;
-        commit('allPost', feedJson)
+        const postsJson   = allData.feed.entry;
+        */
+        const data        = await fetch(`https://www.googleapis.com/blogger/v3/blogs/${blogID}/posts?key=${apiKey}&fetchImages=true`);
+        const allData     = await data.json();
+        const postsJson   = allData.items;
+        commit('allPost', postsJson)
       }catch(error){
         console.log(error)
       }

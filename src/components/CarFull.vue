@@ -1,14 +1,15 @@
 <template>
-  <div class="bg-light vh-100">    
-    <div class="container" >
-      <div class='d-flex justify-content-between align-items-center py-1'>
+
+  <div class="container" >
+
+    <div class='d-flex justify-content-between align-items-center py-1'>
         <button type="button" class='btn btn-outline-secondary' @click.stop="back">
           <i class='fas fa-chevron-left fa-lg'/>
         </button>
         <h5 class="text-uppercase" id='offcanvasRightLabel'>Lista de productos</h5>
-      </div>
+    </div>
 
-      <div class="border-bottom border-2 border-success" style="overflow:scroll; height:80vh">
+    <div class="border-bottom border-2 border-success" style="overflow:scroll; height:80vh">
         <ul class="list-group">
           <li class='ist-group-item bg-white m-0 my-1 p-1' v-for='(c, index) of car' :key="index">
             <div class='row m-0 p-0'>
@@ -43,16 +44,16 @@
             <span class='fw-bold'>{{ totalItems }}</span> | <span class='fw-bold price'>{{ totalPrice }}</span>
           </div>
         </div>
-      </div>
-
-      <div class="py-3" v-if='car.length > 0'>
-        <router-link class="btn btn-secondary w-100" to="/dataForm">
-          Continuar
-        </router-link>
-      </div>
     </div>
-    <DeleteModal :keyProduct='identifier' />
+
+    <div class="py-3" v-if='car.length > 0'>
+      <button class="btn btn-secondary w-100" type="button" data-bs-target="#carCarousel" data-bs-slide="next" >
+        Continuar
+      </button>
+    </div>
   </div>
+    <DeleteModal :keyProduct='identifier' />
+
 </template>
 
 
