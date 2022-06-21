@@ -47,7 +47,7 @@
     </div>
 
     <div class="py-3" v-if='car.length > 0'>
-      <button class="btn btn-secondary w-100" type="button" data-bs-target="#carCarousel" data-bs-slide="next" >
+      <button class="btn btn-primary w-100" type="button" data-bs-target="#carCarousel" data-bs-slide="next" >
         Continuar
       </button>
     </div>

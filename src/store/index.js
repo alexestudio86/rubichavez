@@ -27,15 +27,18 @@ export default createStore({
       }
       this.commit('setLocal');
     },
-    setLocal( state ){
-      const carString = JSON.stringify(state.car);
-      localStorage.setItem('car', carString);
-    },
     deleteProduct( state, e ){
       state.car.splice(e, 1);
       const getModal = document.getElementById('deleteModal');
       const modal = bootstrap.Modal.getOrCreateInstance(getModal);
       modal.hide();
+    },
+    setLocal( state ){
+      const carString = JSON.stringify(state.car);
+      localStorage.setItem('car', carString);
+    },
+    clearCar(){
+      alert('limpiado');
     }
   },
   actions: {
