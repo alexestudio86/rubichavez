@@ -8,7 +8,7 @@ export default createStore({
     dataUser: {
       name: ''
     },
-    whatsappNumber: '+525510698215'
+    whatsappNumber: '+5214531157233'
   },
   getters: {
     totalItems(state){
