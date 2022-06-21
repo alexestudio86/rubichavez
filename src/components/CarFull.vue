@@ -3,9 +3,9 @@
   <div class="container" >
 
     <div class='d-flex justify-content-between align-items-center py-1'>
-        <button type="button" class='btn btn-outline-secondary' @click.stop="back">
+        <router-link class='btn btn-outline-secondary' to="/" >
           <i class='fas fa-chevron-left fa-lg'/>
-        </button>
+        </router-link>
         <h5 class="text-uppercase" id='offcanvasRightLabel'>Lista de productos</h5>
     </div>
 
@@ -79,9 +79,6 @@ export default {
   },
   methods: {
     ...mapMutations(['addQuantity', 'substractQuantity']),
-    back(){
-      this.$router.go(-1)
-    },
     asignID( e ){
       this.identifier   = e;
     }
