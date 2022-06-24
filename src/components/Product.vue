@@ -11,7 +11,7 @@
       </nav>
       <div class='row m-0 p-0' v-html='post.content'></div>
       <hr />
-      <select aria-label='Default select example' class='form-select' id='quantity' v-model.number="item.quantity">
+      <select aria-label='Default select example' class='form-select' id='quantity' v-model.number="item.quantity" @change="changeButton">
           <option value='1'>1</option>
           <option value='2'>2</option>
           <option value='3'>3</option>
@@ -65,7 +65,7 @@
       </select>
       <hr />
       <div class="py-1">
-        <button class='btn bg-warning w-100 custom' type='button' @click='addToCar' data-bs-toggle="tooltip" data-bs-placement="top" title="Producto actualizado" >
+        <button class='btn bg-warning w-100' :class="{ 'custom' : found }" type='button' @click='addToCar' data-bs-toggle="tooltip" data-bs-placement="top" title="Producto actualizado" >
           <i class='fas fa-cart-plus'/> Añadir al carrito
         </button>
       </div>
@@ -85,6 +85,7 @@ export default {
   name: 'Product',
   data(){
     return{
+      found: false,
       item: {
         id:             this.$store.state.blogger.post.id,
         title:          this.$store.state.blogger.post.title,
@@ -92,6 +93,12 @@ export default {
         quantity:       1,
         price:          300
       }
+    }
+  },
+  mounted(){
+    this.listenerInputs();
+    if( this.findDuplicated() ){
+      this.found = true;
     }
   },
   methods: {
@@ -120,9 +127,35 @@ export default {
       }else{
         this.car.push( this.item );
       }
+      this.found = true;
       this.showTooltip();
       const carString = JSON.stringify(this.car);
       localStorage.setItem('car', carString);
+    },
+    async listenerInputs(){
+      try{
+        const inputsRadio = await document.querySelectorAll('form.form-switch input ');
+        console.log(inputsRadio)
+        inputsRadio.forEach( inputRadio => {
+          inputRadio.addEventListener('change', this.changeButton )
+        });
+      }catch(error){
+        console.log(error)
+      }
+    },
+    findDuplicated(){
+      // Asign price
+      this.item.price   = parseInt( document.querySelector('form.form-switch input:checked').value );
+      // Check duplicateds
+      const buscaDuplicado = this.car.indexOf( this.car.find( c => c.id === this.item.id ) );
+      if( buscaDuplicado >= 0 ){
+        return true;
+      }else{
+        return false;
+      }
+    },
+    changeButton(){
+      this.found = false;
     }
   },
   computed: {

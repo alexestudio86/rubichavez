@@ -15,7 +15,7 @@
           <div class="py-3">
             <div class="py-2">
               <label for="guest" class="form-label">Nombre</label><span class="text-danger" v-if='dataUser.name.length > 0 && dataUser.name.length < 4'> (Mínimo 4 caracteres))</span>
-              <input type="text" class="form-control" id="guest" placeholder="ej. José Blaz" pattern="[A-z ]{4,15}" v-model='dataUser.name' required />
+              <input type="text" class="form-control" id="guest" placeholder="ej. José Blaz" pattern="[A-z ]{4}" v-model='dataUser.name' required />
             </div>
           </div>
         </div>
