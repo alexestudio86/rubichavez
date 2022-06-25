@@ -70,7 +70,7 @@
         </button>
       </div>
       <div class="py-1">
-        <router-link class="btn btn-warning w-100" to='/dataForm' >Realizar pedido</router-link>
+        <router-link class="btn btn-warning w-100" to='/checkout' >Realizar pedido</router-link>
       </div>
     </div>
   </div>
