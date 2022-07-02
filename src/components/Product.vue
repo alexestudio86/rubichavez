@@ -88,7 +88,7 @@ export default {
       found: false,
       item: {
         id:             this.$store.state.blogger.post.id,
-        title:          this.$store.state.blogger.post.title,
+        title:          'Nombre del producto',
         picture:        this.$store.state.blogger.post.images[0] ? this.$store.state.blogger.post.images[0].url.replace("s1024","s90") :  'https://blogger.googleusercontent.com/img/a/AVvXsEh7Jx5rNMA2KDw2pXf65nS5ybDjI4Hd8VhHil6KU6oiOZY9KxWzcQK7K49JzIY1OwuT8lIXHHD8-wC-EZb88ceQSt8XHwkeJl-ogDxHtwY9zt7s0OVDlm8MXDanI7h2rl_vl-dCK-kaTy2hG1x6BbfxoEJdGECG1VK8BjBCIqjjAOdzmlKcBGl9ZK1tfg=s90',
         quantity:       1,
         price:          300
@@ -117,11 +117,14 @@ export default {
       }
     },
     addToCar(){
+      // Asign Title
+      this.item.title = `${this.$store.state.blogger.post.title} | ${document.querySelector('form input[name]:checked').id}`;
       // Asign price
       this.item.price   = parseInt( document.querySelector('form input[name]:checked').value );
       // Check duplicateds
       const buscaDuplicado = this.car.indexOf( this.car.find( c => c.id === this.item.id ) );
       if( buscaDuplicado >= 0 ){
+        this.car[ buscaDuplicado ].title    = this.item.title;
         this.car[ buscaDuplicado ].price    = this.item.price;
         this.car[ buscaDuplicado ].quantity = this.item.quantity;
       }else{
